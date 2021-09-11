@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/bad_script</item>
+        <item>@font/berkshire_swash</item>
+        <item>@font/bonbon</item>
+        <item>@font/butcherman</item>
+        <item>@font/chewy</item>
+        <item>@font/crafty_girls</item>
+        <item>@font/creepster</item>
+        <item>@font/faster_one</item>
+        <item>@font/felipa</item>
+        <item>@font/indie_flower</item>
+        <item>@font/nosifer</item>
+        <item>@font/permanent_marker</item>
+        <item>@font/plaster</item>
+        <item>@font/romanesco</item>
+        <item>@font/trade_winds</item>
+    </array>
+</resources>
