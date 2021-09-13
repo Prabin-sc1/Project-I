@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.opengl.Visibility;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -80,6 +81,15 @@ public class MainActivity2 extends AppCompatActivity {
         password = findViewById(R.id.passwordEditId);
         confirmPassword = findViewById(R.id.confirmEditId);
 
+        forgot.setText(Html.fromHtml("<u>Forgot password?</u>"));
+
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity2.this, ForgotPasswordActivity.class));
+                finish();
+            }
+        });
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
