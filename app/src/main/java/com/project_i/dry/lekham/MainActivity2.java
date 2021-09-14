@@ -1,7 +1,10 @@
 package com.project_i.dry.lekham;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,6 +13,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,15 +27,21 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import androidx.appcompat.widget.Toolbar;
 
 import org.w3c.dom.Text;
 
 public class MainActivity2 extends AppCompatActivity {
+    NavigationView nav;
+    ActionBarDrawerToggle toggle;
+    DrawerLayout drawerLayout;
+
 
 //    private static int RC_SIGN_IN = 100;
 //    GoogleSignInClient mGoogleSignInClient;
@@ -81,6 +91,31 @@ public class MainActivity2 extends AppCompatActivity {
         password = findViewById(R.id.passwordEditId);
         confirmPassword = findViewById(R.id.confirmEditId);
 
+
+        //code start here for navigation drawer
+
+        Toolbar toolbar =  findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        nav = findViewById(R.id.navmenu);
+        drawerLayout = findViewById(R.id.drawer);
+
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.start, R.string.end);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+               switch(menuItem.getItemId()){
+                   case R.id.home_menu:
+                       Toast.makeText(MainActivity2.this, "Home panel is opened", Toast.LENGTH_SHORT).show();
+                       drawerLayout.closeDrawer(GravityCompat.START);
+                       break;
+               }
+                return true;
+            }
+        });
+        //Code end here for navigation drawer
         forgot.setText(Html.fromHtml("<u>Forgot password?</u>"));
 
         forgot.setOnClickListener(new View.OnClickListener() {
